@@ -8,23 +8,23 @@ import java.math.BigDecimal;
 public enum FileSizePrefix {
     BYTE(new BigDecimal("1"), ""),
 
-    KILOBYTE(new BigDecimal("1000").multiply(BYTE.unitBytes), "KB"),
-    MEGABYTE(new BigDecimal("1000").multiply(KILOBYTE.unitBytes), "MB"),
-    GIGABYTE(new BigDecimal("1000").multiply(MEGABYTE.unitBytes), "GB"),
-    TERABYTE(new BigDecimal("1000").multiply(GIGABYTE.unitBytes), "TB"),
-    PETABYTE(new BigDecimal("1000").multiply(TERABYTE.unitBytes), "PB"),
-    EXABYTE(new BigDecimal("1000").multiply(PETABYTE.unitBytes), "EB"),
-    ZETTABYTE(new BigDecimal("1000").multiply(EXABYTE.unitBytes), "ZB"),
-    YOTTABYTE(new BigDecimal("1000").multiply(ZETTABYTE.unitBytes), "YB"),
+    KILOBYTE(new BigDecimal("1000").pow(1), "KB"),
+    MEGABYTE(new BigDecimal("1000").pow(2), "MB"),
+    GIGABYTE(new BigDecimal("1000").pow(3), "GB"),
+    TERABYTE(new BigDecimal("1000").pow(4), "TB"),
+    PETABYTE(new BigDecimal("1000").pow(5), "PB"),
+    EXABYTE(new BigDecimal("1000").pow(6), "EB"),
+    ZETTABYTE(new BigDecimal("1000").pow(7), "ZB"),
+    YOTTABYTE(new BigDecimal("1000").pow(8), "YB"),
 
-    KIBIBYTE(new BigDecimal("1024").multiply(BYTE.unitBytes), "KiB"),
-    MEBIBYTE(new BigDecimal("1024").multiply(KIBIBYTE.unitBytes), "MiB"),
-    GIBIBYTE(new BigDecimal("1024").multiply(MEBIBYTE.unitBytes), "GiB"),
-    TEBIBYTE(new BigDecimal("1024").multiply(GIBIBYTE.unitBytes), "TiB"),
-    PEBIBYTE(new BigDecimal("1024").multiply(TEBIBYTE.unitBytes), "PiB"),
-    EXBIBYTE(new BigDecimal("1024").multiply(PEBIBYTE.unitBytes), "EiB"),
-    ZEBIBYTE(new BigDecimal("1024").multiply(EXBIBYTE.unitBytes), "ZiB"),
-    YOBIBYTE(new BigDecimal("1024").multiply(ZEBIBYTE.unitBytes), "YiB");
+    KIBIBYTE(new BigDecimal("1024").pow(1), "KiB"),
+    MEBIBYTE(new BigDecimal("1024").pow(2), "MiB"),
+    GIBIBYTE(new BigDecimal("1024").pow(3), "GiB"),
+    TEBIBYTE(new BigDecimal("1024").pow(4), "TiB"),
+    PEBIBYTE(new BigDecimal("1024").pow(5), "PiB"),
+    EXBIBYTE(new BigDecimal("1024").pow(6), "EiB"),
+    ZEBIBYTE(new BigDecimal("1024").pow(7), "ZiB"),
+    YOBIBYTE(new BigDecimal("1024").pow(8), "YiB");
 
     public static FileSizePrefix[] SI_UNITS = {
         KILOBYTE,
