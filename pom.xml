@@ -8,6 +8,25 @@
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <name>ByteSize</name>
+    <description>A simple library to assist in converting between different size representations</description>
+    <url>http://github.com/laxd/ByteSize</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Lawrence Andrews</name>
+            <email>lawrence@lawrenceandrews.co.uk</email>
+            <organization>laxd</organization>
+            <organizationUrl>http://lawrenceandrews.co.uk</organizationUrl>
+        </developer>
+    </developers>
 
     <dependencies>
         <dependency>
@@ -42,6 +61,20 @@
                         <id>attach-javadocs</id>
                         <goals>
                             <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.5</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
                         </goals>
                     </execution>
                 </executions>
