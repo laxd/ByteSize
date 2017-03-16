@@ -29,7 +29,7 @@ public class ByteSizeTest {
 
     @Test
     public void testStringConversionFromLargerPrefixToSmallerPrefix() throws Exception {
-        String fileSize = byteSize.getFormattedFileSize(new BigDecimal("0.001"), FileSizePrefix.MEGABYTE, 1);
+        String fileSize = byteSize.getFormattedFileSize(new BigDecimal("0.001"), ByteUnit.MEGABYTE, 1);
 
         assertEquals("1.0KB", fileSize);
     }

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * Created by lawrence on 14/03/17.
  */
-public enum FileSizePrefix {
+public enum ByteUnit {
     BYTE(new BigDecimal("1"), ""),
 
     KILOBYTE(new BigDecimal("1000").pow(1), "KB"),
@@ -26,7 +26,7 @@ public enum FileSizePrefix {
     ZEBIBYTE(new BigDecimal("1024").pow(7), "ZiB"),
     YOBIBYTE(new BigDecimal("1024").pow(8), "YiB");
 
-    public static FileSizePrefix[] SI_UNITS = {
+    public static ByteUnit[] SI_UNITS = {
         KILOBYTE,
         MEGABYTE,
         GIGABYTE,
@@ -37,7 +37,7 @@ public enum FileSizePrefix {
         YOTTABYTE
     };
 
-    public static FileSizePrefix[] NON_SI_UNITS = {
+    public static ByteUnit[] BINARY_UNITS = {
             KIBIBYTE,
             MEBIBYTE,
             GIBIBYTE,
@@ -51,20 +51,20 @@ public enum FileSizePrefix {
     private BigDecimal unitBytes;
     private String text;
 
-    FileSizePrefix(BigDecimal unitBytes, String text) {
+    ByteUnit(BigDecimal unitBytes, String text) {
         this.unitBytes = unitBytes;
         this.text = text;
     }
 
     /**
-     * Converts the {@code sourceSize} from the given {@link FileSizePrefix}
-     * to this {@link FileSizePrefix}'s size.
+     * Converts the {@code sourceSize} from the given {@link ByteUnit}
+     * to this {@link ByteUnit}'s size.
      * @param sourceSize Size of the source, in {@code sourcePrefix} units.
      * @param sourcePrefix Units of {@code sourceSize}.
-     * @return The amount of this {@link FileSizePrefix}es that correspond to
+     * @return The amount of this {@link ByteUnit}es that correspond to
      * the same file size as represented by {@code sourceSize} and {@code sourcePrefix}.
      */
-    public BigDecimal convert(BigDecimal sourceSize, FileSizePrefix sourcePrefix) {
+    public BigDecimal convert(BigDecimal sourceSize, ByteUnit sourcePrefix) {
         // Convert to bytes first
         BigDecimal bytes = sourcePrefix.unitBytes.multiply(sourceSize);
         
@@ -73,14 +73,14 @@ public enum FileSizePrefix {
     }
 
     /**
-     * Convenience method that delegates to {@link #convert(BigDecimal, FileSizePrefix)} by
+     * Convenience method that delegates to {@link #convert(BigDecimal, ByteUnit)} by
      * wrapping the {@code long} argument in a {@link BigDecimal}.
      *
-     * @param sourceSize Size of the source, in {@link FileSizePrefix} units.
+     * @param sourceSize Size of the source, in {@link ByteUnit} units.
      * @param sourcePrefix Unit of the source size.
      * @return The long value of the required size, as returned by {@link BigDecimal#longValue()}
      */
-    public long convert(long sourceSize, FileSizePrefix sourcePrefix) {
+    public long convert(long sourceSize, ByteUnit sourcePrefix) {
         return convert(new BigDecimal(String.valueOf(sourceSize)), sourcePrefix).longValue();
     }
 
