@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        build 'ByteSize'
+        sh 'mvn clean install' 
       }
     }
   }
